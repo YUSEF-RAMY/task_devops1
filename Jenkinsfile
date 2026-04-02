@@ -36,14 +36,6 @@ pipeline {
                 }
             }
         }
- 
-        stage('Deploy to K8s') {
-            steps {
-                withCredentials([file(credentialsId: 'k8s-config', variable: 'KUBECONFIG')]) {
-                    sh 'kubectl set image deployment/node-app node-app=yusef14/my-node-app:${TAG}'
-                }
-            }
-        }
     }
     
     post {
